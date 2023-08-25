@@ -1,0 +1,13 @@
+{
+  "common": {
+    "appName": "Example App"
+  },
+  "footer": {
+    "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
+  },
+  "counter": {
+    "currentValue": "Current value is {{currentValue}}",
+    "increment": "Increment",
+    "decrement": "Decrement"
+  }
+}

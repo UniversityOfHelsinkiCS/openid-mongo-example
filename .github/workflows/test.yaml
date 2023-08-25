@@ -1,0 +1,37 @@
+name: E2E Tests
+
+on: [workflow_call]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build project for eslint
+        run: npm install
+
+      - name: Run eslint
+        run: npm run lint
+
+  cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare test data and start the application
+        run: docker compose -f compose.ci.yaml up -d
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          install-command: npm i
+
+      - name: Upload video
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          path: /home/runner/work/openid-mongo-example/openid-mongo-example/cypress/videos/*

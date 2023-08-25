@@ -1,0 +1,13 @@
+{
+  "common": {
+    "appName": "Esimerkkisovellus"
+  },
+  "footer": {
+    "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
+  },
+  "counter": {
+    "currentValue": "Nykyinen arvo on {{currentValue}}",
+    "increment": "Lisää",
+    "decrement": "Vähennä"
+  }
+}
