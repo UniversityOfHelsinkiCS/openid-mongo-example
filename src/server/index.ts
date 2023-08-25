@@ -11,6 +11,7 @@ import logger from './util/logger'
 import router from './routes'
 import { connectToDatabase } from './db/connection'
 import seed from './db/seed'
+import setupAuthentication from './util/oidc'
 
 const app = express()
 
@@ -40,6 +41,8 @@ if (inProduction || inStaging) {
 app.listen(PORT, async () => {
   await connectToDatabase()
   await seed()
+
+  await setupAuthentication()
 
   logger.info(`Server running on port ${PORT}`)
 })
