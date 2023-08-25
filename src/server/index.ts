@@ -1,6 +1,8 @@
 import path from 'path'
 
 import express from 'express'
+import session from 'express-session'
+import passport from 'passport'
 
 import { PORT } from './util/config'
 import { inProduction, inStaging } from '../config'
@@ -10,6 +12,13 @@ import { connectToDatabase } from './db/connection'
 import seed from './db/seed'
 
 const app = express()
+
+app.use(
+  session({ secret: 'PLACEHOLDER', resave: false, saveUninitialized: true })
+)
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/api', (req, res, next) => router(req, res, next))
 app.use('/api', (_, res) => res.sendStatus(404))

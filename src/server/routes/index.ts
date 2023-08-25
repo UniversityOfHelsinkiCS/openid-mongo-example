@@ -1,24 +1,25 @@
 import express from 'express'
 import cors from 'cors'
 
-import { inDevelopment } from '../../config'
-import shibbolethMiddleware from '../middleware/shibboleth'
+import { inDevelopment, inE2EMode } from '../../config'
 import userMiddleware from '../middleware/user'
 import loginRouter from './login'
+import userRouter from './user'
 import counterRouter from './counter'
 
 const router = express()
 
-if (inDevelopment) router.use(cors())
-
 router.use(express.json())
 
-router.use(shibbolethMiddleware)
-router.use(userMiddleware)
+if (inDevelopment || inE2EMode) {
+  router.use(cors())
+  router.use(userMiddleware)
+}
 
 router.get('/ping', (_, res) => res.send('pong'))
 
 router.use('/', loginRouter)
+router.use('/users', userRouter)
 router.use('/counter', counterRouter)
 
 export default router

@@ -12,8 +12,9 @@ import {
   Grow,
   Popper,
   Typography,
+  Link,
 } from '@mui/material'
-import { Language } from '@mui/icons-material'
+import { Language, LoginOutlined, LogoutOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
 import useCurrentUser from '../../hooks/useCurrentUser'
@@ -53,6 +54,25 @@ const NavBar = () => {
             </Box>
           </Box>
           <Box>
+            {user ? (
+              <Link
+                href="https://openid.ext.ocp-test-0.k8s.it.helsinki.fi/api/logout"
+                style={{ textDecoration: 'none' }}
+              >
+                <Button>
+                  <LogoutOutlined sx={styles.icon} /> {t('logout')}
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                href="https://openid.ext.ocp-test-0.k8s.it.helsinki.fi/api/login"
+                style={{ textDecoration: 'none' }}
+              >
+                <Button>
+                  <LoginOutlined sx={styles.icon} /> {t('login')}
+                </Button>
+              </Link>
+            )}
             <Button
               ref={anchorRef}
               id="composition-button"
