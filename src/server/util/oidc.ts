@@ -69,7 +69,7 @@ const verifyLogin = async (
     isAdmin: checkAdmin(iamGroups),
   }
 
-  await User.findByIdAndUpdate(user.id, { ...user })
+  await User.findOneAndUpdate({ username }, { ...user }, { upsert: true })
 
   done(null, user)
 }
@@ -80,14 +80,17 @@ const setupAuthentication = async () => {
   const client = await getClient()
 
   passport.serializeUser((user, done) => {
-    const { id, iamGroups, isAdmin } = user as UserType
+    const { username, iamGroups, isAdmin } = user as UserType
 
-    return done(null, { id, iamGroups, isAdmin })
+    return done(null, { username, iamGroups, isAdmin })
   })
 
   passport.deserializeUser(
-    async ({ id, iamGroups }: { id: string; iamGroups: string[] }, done) => {
-      const user = await User.findById(id)
+    async (
+      { username, iamGroups }: { username: string; iamGroups: string[] },
+      done
+    ) => {
+      const user = await User.findOne({ username })
 
       if (!user) return done(new Error('User not found'))
 
