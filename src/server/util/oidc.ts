@@ -90,9 +90,7 @@ const setupAuthentication = async () => {
       { username, iamGroups }: { username: string; iamGroups: string[] },
       done
     ) => {
-      const user = await User.findOne({ username })
-
-      console.log({ ...user, iamGroups })
+      const user = await User.findOne({ username }).lean()
 
       if (!user) return done(new Error('User not found'))
 
