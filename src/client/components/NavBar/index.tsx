@@ -17,7 +17,7 @@ import {
 import { Language, LoginOutlined, LogoutOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
-import { HOST_NAME } from '../../../config'
+import { BASE_PATH } from '../../../config'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from './styles'
@@ -57,7 +57,7 @@ const NavBar = () => {
           <Box>
             {user ? (
               <Link
-                href={`${HOST_NAME}/api/logout`}
+                href={`${BASE_PATH}/api/logout`}
                 style={{ textDecoration: 'none' }}
               >
                 <Button>
@@ -66,7 +66,7 @@ const NavBar = () => {
               </Link>
             ) : (
               <Link
-                href={`${HOST_NAME}/api/oidc`}
+                href={`${BASE_PATH}/api/oidc`}
                 style={{ textDecoration: 'none' }}
               >
                 <Button>
