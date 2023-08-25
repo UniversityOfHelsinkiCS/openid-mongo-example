@@ -4,7 +4,6 @@ import cors from 'cors'
 import { inDevelopment, inE2EMode } from '../../config'
 import userMiddleware from '../middleware/user'
 import loginRouter from './login'
-import userRouter from './user'
 import counterRouter from './counter'
 
 const router = express()
@@ -19,7 +18,6 @@ if (inDevelopment || inE2EMode) {
 router.get('/ping', (_, res) => res.send('pong'))
 
 router.use('/', loginRouter)
-router.use('/users', userRouter)
 router.use('/counter', counterRouter)
 
 export default router

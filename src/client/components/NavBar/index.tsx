@@ -17,6 +17,7 @@ import {
 import { Language, LoginOutlined, LogoutOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
+import { HOST_NAME } from '../../../config'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from './styles'
@@ -56,7 +57,7 @@ const NavBar = () => {
           <Box>
             {user ? (
               <Link
-                href="https://openid.ext.ocp-test-0.k8s.it.helsinki.fi/api/logout"
+                href={`${HOST_NAME}/api/logout`}
                 style={{ textDecoration: 'none' }}
               >
                 <Button>
@@ -65,7 +66,7 @@ const NavBar = () => {
               </Link>
             ) : (
               <Link
-                href="https://openid.ext.ocp-test-0.k8s.it.helsinki.fi/api/login"
+                href={`${HOST_NAME}/api/oidc`}
                 style={{ textDecoration: 'none' }}
               >
                 <Button>

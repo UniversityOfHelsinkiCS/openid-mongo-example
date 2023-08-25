@@ -8,6 +8,7 @@ services:
     image: test
     environment:
       - DATABASE_URL=mongodb://root:root@db/admin
+      - SESSION_SECRET=secret
     ports:
       - 8000:8000
     container_name: test
