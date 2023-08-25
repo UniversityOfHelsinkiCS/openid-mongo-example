@@ -4,7 +4,8 @@ import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
 
-import { PORT } from './util/config'
+import { PORT, SESSION_SECRET } from './util/config'
+import { redisStore } from './util/redis'
 import { inProduction, inStaging } from '../config'
 import logger from './util/logger'
 import router from './routes'
@@ -14,7 +15,12 @@ import seed from './db/seed'
 const app = express()
 
 app.use(
-  session({ secret: 'PLACEHOLDER', resave: false, saveUninitialized: true })
+  session({
+    store: redisStore,
+    resave: false,
+    saveUninitialized: false,
+    secret: SESSION_SECRET,
+  })
 )
 
 app.use(passport.initialize())

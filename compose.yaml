@@ -24,5 +24,11 @@ services:
       - mongo_data:/data/db
     container_name: dev_db
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - 6379:6379
+    container_name: dev_redis
+
 volumes:
   mongo_data:

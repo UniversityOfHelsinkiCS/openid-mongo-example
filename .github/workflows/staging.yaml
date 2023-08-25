@@ -25,7 +25,6 @@ jobs:
           containerfiles: |
             ./Containerfile
           build-args: |
-            BASE_PATH=/example
             STAGING=true
 
       - name: Push to quay.io

@@ -20,3 +20,9 @@ services:
     ports:
       - 27017:27017
     container_name: test_db
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - 6379:6379
+    container_name: test_redis

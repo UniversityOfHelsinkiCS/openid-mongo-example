@@ -8,6 +8,8 @@ export const PORT = process.env.PORT || 8000
 
 export const DATABASE_URL = process.env.DATABASE_URL || ''
 
+export const REDIS_HOST = process.env.REDIS_HOST || 'redis'
+
 export const OIDC_ISSUER = inProduction
   ? 'https://login.helsinki.fi/.well-known/openid-configuration'
   : 'https://login-test.it.helsinki.fi/.well-known/openid-configuration'
