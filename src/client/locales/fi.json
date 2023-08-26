@@ -1,6 +1,8 @@
 {
   "common": {
-    "appName": "Esimerkkisovellus"
+    "appName": "Esimerkkisovellus",
+    "login": "Kirjaudu",
+    "logout": "Kirjaudu ulos"
   },
   "footer": {
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"

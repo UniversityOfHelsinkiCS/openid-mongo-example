@@ -1,6 +1,8 @@
 {
   "common": {
-    "appName": "Example App"
+    "appName": "Example App",
+    "login": "Login",
+    "logout": "Logout"
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
