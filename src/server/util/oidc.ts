@@ -28,6 +28,7 @@ const params = {
       email: { essential: true },
       hyGroupCn: { essential: true },
       preferredLanguage: null,
+      hyPersonStudentId: { essential: true },
     },
   },
 }
