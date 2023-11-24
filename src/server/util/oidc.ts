@@ -29,6 +29,7 @@ const params = {
       hyGroupCn: { essential: true },
       preferredLanguage: null,
       hyPersonStudentId: { essential: true },
+      employeeNumber: { essential: true },
     },
   },
 }
